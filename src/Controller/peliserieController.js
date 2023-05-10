@@ -3,6 +3,27 @@ import { PeliSerieService } from '../services/PeliSerieService.js';
 const router = Router();
 const peliserieService = new PeliSerieService();
 
+/*
+    Hacer validaciones de status
+
+        Hacer validaciones de status
+
+            Hacer validaciones de status
+
+                Hacer validaciones de status
+
+                    Hacer validaciones de status
+            
+                Hacer validaciones de status
+
+            Hacer validaciones de status
+
+        Hacer validaciones de status
+
+    Hacer validaciones de status
+    
+*/
+
 router.get('', async (req, res) => {
   const peliserie = await peliserieService.getPeliserie();
   return res.status(200).json(peliserie);
@@ -23,4 +44,8 @@ router.delete('/:id', async (req, res) => {
     const peliserie = await peliserieService.deletePeliserieById(req.params.id);
     return res.status(200).json(peliserie);
 });
+router.get('/movies', async (req, res) => {
+    const peliserie = await peliserieService.listadoPelicula();
+    return res.status(200).json(peliserie);
+  });
 export default router;

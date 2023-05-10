@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
-import PersonajeRouter from "./src/controllers/personajeController.js";
-import PeliserieRouter from "./src/controllers/peliserieController.js";
+import PersonajeRouter from "./src/Controller/personajeController.js";
+import PeliserieRouter from "./src/Controller/peliserieController.js";
 
 const app = express();
 const port = 5000;

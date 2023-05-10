@@ -55,4 +55,11 @@ export class PeliSerieService {
         console.log(response)
         return response.recordset;
     }
+    
+    listadoPelicula = async () => {
+        const pool = await sql.connect(config);
+        const response = await pool.request().query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla}`);
+        console.log(response)
+        return response.recordset;
+    }
 }
