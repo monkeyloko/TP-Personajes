@@ -2,6 +2,7 @@ import sql from 'mssql'
 import 'dotenv/config'
 
 const peliserieTabla = process.env.DB_TABLA_PELISERIE;
+const personajeTabla = process.env.DB_TABLA_PERSONAJES;
 
 export class PeliSerieService {
 
@@ -62,4 +63,16 @@ export class PeliSerieService {
         console.log(response)
         return response.recordset;
     }
+    detallePeliserie = async (id) => {
+        const pool = await sql.connect(config);
+        const response = await pool.request()
+        .input('id',sql.Int, id)
+        .query(`SELECT ${peliserieTabla}.Id, ${peliserieTabla}.Imagen, ${peliserieTabla}.Titulo, ${peliserieTabla}.FechaCreacion, ${peliserieTabla}.Calificacion, ${personajeTabla}.Id, ${personajeTabla}.Nombre
+        FROM ${peliserieTabla}
+        INNER JOIN ${intermediaTabla}
+        ON ${peliserieTabla}.Id = ${intermediaTabla}.fkPeliSeries INNER JOIN ${personajeTabla} ON ${intermediaTabla}.fkPersonje = ${personajeTabla}.Id WHERE ${peliserieTabla}.Id = @id`);
+        console.log(response);
+        return response.recordset;
+    }
+    
 }

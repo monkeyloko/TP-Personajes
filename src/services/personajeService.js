@@ -7,14 +7,6 @@ const intermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 
 export class PersonajeService {
 
-    getPersonaje = async () => {
-        const pool = await sql.connect(config);
-        const response = await pool.request().query(`SELECT * from ${personajeTabla}`);
-        console.log(response)
-
-        return response.recordset;
-    }
-
     getPersonajeById = async (id) => {
         const pool = await sql.connect(config);
         const response = await pool.request()
@@ -63,11 +55,34 @@ export class PersonajeService {
 
         return response.recordset;
     }
-    listadoPersonaje = async () => {
+    listadoPersonaje = async (Nombre, Edad, Peso, Pelicula) => {
         const pool = await sql.connect(config);
-        const response = await pool.request().query(`SELECT Imagen, Nombre, Id from ${personajeTabla}`);
-        console.log(response)
-
+        let append = "WHERE";
+        if(Nombre != undefined){
+            append += `${personajeTabla}.Nombre = @Nombre,`;
+        }
+        if(Edad != undefined){
+            append += `${personajeTabla}.Edad = @Edad,`;
+        }
+        if(Peso != undefined){
+            append += `${personajeTabla}.Peso = @Peso,`;
+        }
+        if(Pelicula != undefined){
+            append += `${peliserieTabla}.Pelicula = @Pelicula,`;
+        }
+        if(append == "WHERE"){
+            append = "";
+        }
+        else{
+            append = append.substring(0,append.length-1);
+        }
+        const response = await pool.request()
+        .input('Nombre',sql.NChar, personaje?.Nombre ?? '')
+        .input('Edad',sql.Int, personaje?.Edad ?? 0)
+        .input('Peso',sql.Float, personaje?.Peso ?? 0)
+        .query(`SELECT ${personajeTabla}.Imagen, ${personajeTabla}.Nombre, ${personajeTabla}.Id from ${personajeTabla} INNER JOIN ${intermediaTabla}
+        ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje INNER JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id ` + append);
+        console.log(response);
         return response.recordset;
     }
     detallePersonaje = async (id) => {
@@ -81,6 +96,8 @@ export class PersonajeService {
         console.log(response);
         return response.recordset;
     }
+
         
 
 }
+

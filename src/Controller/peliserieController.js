@@ -47,5 +47,11 @@ router.delete('/:id', async (req, res) => {
 router.get('/movies', async (req, res) => {
     const peliserie = await peliserieService.listadoPelicula();
     return res.status(200).json(peliserie);
-  });
+});
+router.get('/detalle/:id', async (req, res) => {
+    const peliserie = await peliserieService.deletePeliserieById(req.params.id);
+    return res.status(200).json(peliserie);
+});
+
+
 export default router;

@@ -22,13 +22,9 @@ const personajeService = new PersonajeService();
     Hacer validaciones de status
 
 */
-router.get('', async (req, res) => {
-  const personajes = await personajeService.getpersonaje();
-  return res.status(200).json(personajes);
-});
 router.get('/:id', async (req, res) => {
-    const personaje = await personajeService.getpersonajeById(req.params.id);
-    return res.status(200).json(personaje);
+    const personaje = await personajeService.detallePersonaje(req.params.id);
+    return res.status(200).json(personaje)
 });
 router.post('', async (req, res) => {
     const personaje = await personajeService.createpersonaje(req.body);
@@ -43,12 +39,11 @@ router.delete('/:id', async (req, res) => {
     return res.status(200).json(personaje);
 });
 router.get('/characters', async (req, res) => {
+    
     const personaje = await personajeService.listadoPersonaje();
     return res.status(200).json(personaje);
 });
-router.get('/detalle/:id', async (req, res) =>{
-    const personaje = await personajeService.detallePersonaje(req.params.id);
-    return res.status(200).json(personaje)
-});
+
+
 
 export default router;
