@@ -9,8 +9,8 @@ const port = 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use("/personaje", PersonajeRouter);
-app.use("/peliserie", PeliserieRouter);
+app.use("/characters", PersonajeRouter);
+app.use("/movies", PeliserieRouter);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

@@ -1,5 +1,6 @@
 import sql from 'mssql'
 import 'dotenv/config'
+import config from '../models/db.js'
 
 const peliserieTabla = process.env.DB_TABLA_PELISERIE;
 const personajeTabla = process.env.DB_TABLA_PERSONAJES;
@@ -28,7 +29,7 @@ export class PeliSerieService {
         const response = await pool.request()
             .input('Imagen',sql.NChar, peliserie?.Imagen ?? '')
             .input('Titulo',sql.NChar, peliserie?.Titulo ?? '')
-            .input('FechaCreacion',sql.Int, peliserie?.FechaCreacion ?? null)
+            .input('FechaCreacion',sql.NChar, peliserie?.FechaCreacion ?? '')
             .input('Calificacion',sql.Float, peliserie?.Calificacion ?? 0)
             .query(`INSERT INTO ${peliserieTabla}(Imagen, Titulo, FechaCreacion, Calificacion) VALUES (@Imagen, @Titulo, @FechaCreacion, @Calificacion)`);
         console.log(response)
@@ -60,9 +61,11 @@ export class PeliSerieService {
     listadoPelicula = async () => {
         const pool = await sql.connect(config);
         const response = await pool.request().query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla}`);
-        console.log(response)
+        console.log(response.recordset)
+        console.log("2");
         return response.recordset;
     }
+
     detallePeliserie = async (id) => {
         const pool = await sql.connect(config);
         const response = await pool.request()

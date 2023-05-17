@@ -38,7 +38,7 @@ router.delete('/:id', async (req, res) => {
     const personaje = await personajeService.deletepersonajeById(req.params.id);
     return res.status(200).json(personaje);
 });
-router.get('/characters', async (req, res) => {
+router.get('', async (req, res) => {
     
     const personaje = await personajeService.listadoPersonaje();
     return res.status(200).json(personaje);

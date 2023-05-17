@@ -1,8 +1,10 @@
 import { Router } from 'express';
+import express from 'express';
 import { PeliSerieService } from '../services/PeliSerieService.js';
 const router = Router();
 const peliserieService = new PeliSerieService();
-
+const app = express();
+app.use(express.json());
 /*
     Hacer validaciones de status
 
@@ -23,11 +25,11 @@ const peliserieService = new PeliSerieService();
     Hacer validaciones de status
     
 */
-
 router.get('', async (req, res) => {
-  const peliserie = await peliserieService.getPeliserie();
-  return res.status(200).json(peliserie);
+    const peliserie = await peliserieService.listadoPelicula();
+    return res.status(200).json(peliserie);
 });
+
 router.get('/:id', async (req, res) => {
     const peliserie = await peliserieService.getPeliserieById(req.params.id);
     return res.status(200).json(peliserie);
@@ -44,10 +46,7 @@ router.delete('/:id', async (req, res) => {
     const peliserie = await peliserieService.deletePeliserieById(req.params.id);
     return res.status(200).json(peliserie);
 });
-router.get('/movies', async (req, res) => {
-    const peliserie = await peliserieService.listadoPelicula();
-    return res.status(200).json(peliserie);
-});
+
 router.get('/detalle/:id', async (req, res) => {
     const peliserie = await peliserieService.deletePeliserieById(req.params.id);
     return res.status(200).json(peliserie);

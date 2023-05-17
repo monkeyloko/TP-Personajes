@@ -1,5 +1,6 @@
 import sql from 'mssql'
 import 'dotenv/config'
+import config from '../models/db.js'
 
 const personajeTabla = process.env.DB_TABLA_PERSONAJE;
 const peliserieTabla = process.env.DB_TABLA_PELISERIE;
