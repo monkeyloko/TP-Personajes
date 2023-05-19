@@ -9,7 +9,7 @@ const opt = {
     algorithms: ["HS256"],
 };
 
-const jwtStrategy = new Strategy(opt, (jwt_payload, done) =>{
+export const jwtStrategy = new Strategy(opt, (jwt_payload, done) =>{
     if(!jwt_payload){
         done(true);
     } else{
@@ -18,7 +18,7 @@ const jwtStrategy = new Strategy(opt, (jwt_payload, done) =>{
 });
 
 export const Authenticate = (req,res,next) =>{
-    passport.authenticate(jwlStrategy, (err, user)=>{
+    passport.authenticate(jwtStrategy, (err, user)=>{
         console.log(user);
         if(err) res.status(401).send({ message: "Unauthorized"});
         if (!user) res.status(401).send({ message: "Unautherized"});

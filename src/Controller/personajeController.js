@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { PersonajeService } from '../services/PersonajeService.js';
+import { Authenticate } from '../common/jwt.strategy.js';
 const router = Router();
 const personajeService = new PersonajeService();
 /*

@@ -31,15 +31,16 @@ router.get('', Authenticate, async (req, res) => {
     return res.status(200).json(peliserie);
 });
 
-
 router.post('',Authenticate,  async (req, res) => {
     const peliserie = await peliserieService.createPeliserie(req.body);
     return res.status(201).json(peliserie);
 });
+
 router.put('/:id',Authenticate,  async (req, res) => {
     const peliserie = await peliserieService.updatePeliserieById(req.body);
     return res.status(200).json(peliserie);
 });
+
 router.delete('/:id',Authenticate,  async (req, res) => {
     const peliserie = await peliserieService.deletePeliserieById(req.params.id);
     return res.status(200).json(peliserie);
