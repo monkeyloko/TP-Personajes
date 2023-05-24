@@ -13,7 +13,7 @@ const getRandomString = () => {
     return result;
   };
   
-  const getSignedToken = () => {
+ export const getSignedToken = () => {
     const userId = getRandomString();
     const userMail = `${userId}@hotmail.com`;
     const token = jwt.sign(
@@ -23,7 +23,7 @@ const getRandomString = () => {
       },
       process.env.AUTH_HS256_KEY,
       {
-        issuer: process.env.AUTH_HS256_KEY,
+        issuer: process.env.AUTH_ISSUER_URL,
         subject: userId,
         audience: ["http://localhost:5000/"],
         expiresIn: 77777777,
@@ -32,5 +32,3 @@ const getRandomString = () => {
   
     return token;
   };
-  
-  console.log(getSignedToken());

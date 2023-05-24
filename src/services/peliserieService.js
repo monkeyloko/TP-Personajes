@@ -42,7 +42,7 @@ export class PeliSerieService {
             .input('Id',sql.Int, id)
             .input('Imagen',sql.NChar, peliserie?.Imagen ?? '')
             .input('Titulo',sql.NChar, peliserie?.Titulo ?? '')
-            .input('FechaCreacion',sql.Int, peliserie?.FechaCreacion ?? null)
+            .input('FechaCreacion',sql.Date, peliserie?.FechaCreacion ?? null)
             .input('Calificacion',sql.Float, peliserie?.Calificacion ?? 0)
             .query(`UPDATE ${peliserieTabla} SET Imagen = @Imagen, Titulo = @Titulo, FechaCreacion = @FechaCreacion, Calificacion = @Calificacion WHERE Id = @Id`);
         console.log(response)
