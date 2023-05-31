@@ -6,7 +6,9 @@ const peliserieTabla = process.env.DB_TABLA_PELISERIE;
 const personajeTabla = process.env.DB_TABLA_PERSONAJES;
 
 export class PeliSerieService {
-
+/*
+    REVISAR INNER VS OUTER JOIN
+*/
     getPeliserie = async () => {
         const pool = await sql.connect(config);
         const response = await pool.request().query(`SELECT * from ${peliserieTabla}`);

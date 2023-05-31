@@ -78,11 +78,12 @@ export class PersonajeService {
             append = append.substring(0,append.length-1);
         }
         const response = await pool.request()
-        .input('Nombre',sql.NChar, personaje?.Nombre ?? '')
-        .input('Edad',sql.Int, personaje?.Edad ?? 0)
-        .input('Peso',sql.Float, personaje?.Peso ?? 0)
-        .query(`SELECT ${personajeTabla}.Imagen, ${personajeTabla}.Nombre, ${personajeTabla}.Id from ${personajeTabla} INNER JOIN ${intermediaTabla}
-        ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje INNER JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id ` + append);
+        .input('Nombre',sql.NChar, Nombre ?? '')
+        .input('Edad',sql.Int, Edad ?? 0)
+        .input('Peso',sql.Float, Peso ?? 0)
+        .input('Pelicula', sql.Int, Pelicula ?? 0)
+        .query(`SELECT ${personajeTabla}.Imagen, ${personajeTabla}.Nombre, ${personajeTabla}.Id from ${personajeTabla} LEFT JOIN ${intermediaTabla}
+        ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id ` + append);
         console.log(response);
         return response.recordset;
     }
