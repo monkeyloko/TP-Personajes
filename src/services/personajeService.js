@@ -2,7 +2,7 @@ import sql from 'mssql'
 import 'dotenv/config'
 import config from '../models/db.js'
 
-const personajeTabla = process.env.DB_TABLA_PERSONAJE;
+const personajeTabla = process.env.DB_TABLA_PERSONAJES;
 const peliserieTabla = process.env.DB_TABLA_PELISERIE;
 const intermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 
@@ -58,20 +58,20 @@ export class PersonajeService {
     }
     listadoPersonaje = async (Nombre, Edad, Peso, Pelicula) => {
         const pool = await sql.connect(config);
-        let append = "WHERE";
-        if(Nombre != undefined){
+        let append = "WHERE ";
+        if(!Nombre){
             append += `${personajeTabla}.Nombre = @Nombre,`;
         }
-        if(Edad != undefined){
+        if(!Edad){
             append += `${personajeTabla}.Edad = @Edad,`;
         }
-        if(Peso != undefined){
+        if(!Peso){
             append += `${personajeTabla}.Peso = @Peso,`;
         }
-        if(Pelicula != undefined){
+        if(!Pelicula){
             append += `${peliserieTabla}.Pelicula = @Pelicula,`;
         }
-        if(append == "WHERE"){
+        if(append == "WHERE "){
             append = "";
         }
         else{
@@ -91,10 +91,10 @@ export class PersonajeService {
         const pool = await sql.connect(config);
         const response = await pool.request()
         .input('id',sql.Int, id)
-        .query(`SELECT ${personajeTabla}.Id, ${personajeTabla}.Nombre, ${personajeTabla}.Imagen, ${personajeTabla}.Peso, ${personajeTabla}.Edad, ${personajeTabla}.Historia, ${peliserieTabla}.Titulo
+        .query(`SELECT ${personajeTabla}.*, STRING_AGG(${peliserieTabla}.Titulo, ', ') AS Movies
         FROM ${personajeTabla}
-        INNER JOIN ${intermediaTabla}
-        ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje INNER JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id WHERE ${personajeTabla}.Id = @id`);
+        LEFT OUTER JOIN ${intermediaTabla}
+        ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT OUTER JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id WHERE Personajes.Id = @id GROUP BY ${personajeTabla}.Id, ${personajeTabla}.Edad, ${personajeTabla}.Imagen, ${personajeTabla}.Historia, ${personajeTabla}.Nombre, ${personajeTabla}.Peso`);
         console.log(response);
         return response.recordset;
     }

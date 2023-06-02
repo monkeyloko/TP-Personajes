@@ -4,6 +4,7 @@ import config from '../models/db.js'
 
 const peliserieTabla = process.env.DB_TABLA_PELISERIE;
 const personajeTabla = process.env.DB_TABLA_PERSONAJES;
+const intermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 
 export class PeliSerieService {
 /*
@@ -72,10 +73,10 @@ export class PeliSerieService {
         const pool = await sql.connect(config);
         const response = await pool.request()
         .input('id',sql.Int, id)
-        .query(`SELECT ${peliserieTabla}.Id, ${peliserieTabla}.Imagen, ${peliserieTabla}.Titulo, ${peliserieTabla}.FechaCreacion, ${peliserieTabla}.Calificacion, ${personajeTabla}.Id, ${personajeTabla}.Nombre
+        .query(`SELECT  ${peliserieTabla}.*, STRING_AGG(${personajeTabla}.Nombre, ', ') AS Personajes
         FROM ${peliserieTabla}
-        INNER JOIN ${intermediaTabla}
-        ON ${peliserieTabla}.Id = ${intermediaTabla}.fkPeliSeries INNER JOIN ${personajeTabla} ON ${intermediaTabla}.fkPersonje = ${personajeTabla}.Id WHERE ${peliserieTabla}.Id = @id`);
+        LEFT OUTER JOIN ${intermediaTabla}
+        ON ${peliserieTabla}.Id = ${intermediaTabla}.fkPeliSeries LEFT OUTER JOIN ${personajeTabla} ON ${intermediaTabla}.fkPersonaje = ${personajeTabla}.Id WHERE ${peliserieTabla}.Id = @id GROUP BY ${peliserieTabla}.Id, ${peliserieTabla}.Imagen, ${peliserieTabla}.Titulo, ${peliserieTabla}.FechaCreacion, ${peliserieTabla}.Calificacion`);
         console.log(response);
         return response.recordset;
     }

@@ -33,14 +33,23 @@ router.get('', Authenticate, async (req, res) => {
 
 router.post('',Authenticate,  async (req, res) => {
     const peliserie = await peliserieService.createPeliserie(req.body);
+    const Calificacion = req.body.Calificacion
+    if(Calificacion <1 || Calificacion > 5){
+        return res.status(400).send
+    } 
     return res.status(201).json(peliserie);
 });
 
 router.put('/:id',Authenticate,  async (req, res) => {
     const id = req.params.id;
+    const Calificacion = req.body.Calificacion
+
     console.log(id);
 
     if(id != req.body.Id){
+        return res.status(400).send();
+    }
+    if(Calificacion <1 || Calificacion > 5){
         return res.status(400).send();
     }
     const peliserie = await peliserieService.updatePeliserieById(Id, );
@@ -58,7 +67,7 @@ router.get('/:id',Authenticate,  async (req, res) => {
     if(id < 1){
         return res.status(400).send();
     }
-    const peliserie = await peliserieService.detallePeliserieById(id);
+    const peliserie = await peliserieService.detallePeliserie(id);
     if(!peliserie){
         return res.status(404).send();
     }
