@@ -59,32 +59,38 @@ export class PersonajeService {
     listadoPersonaje = async (Nombre, Edad, Peso, Pelicula) => {
         const pool = await sql.connect(config);
         let append = "WHERE ";
-        if(!Nombre){
-            append += `${personajeTabla}.Nombre = @Nombre,`;
+        if(Nombre){
+            console.log("fortnite")
+            append += `${personajeTabla}.Nombre = @Nombre, `;
         }
-        if(!Edad){
-            append += `${personajeTabla}.Edad = @Edad,`;
+        if(Edad){
+            append += `${personajeTabla}.Edad = @Edad, `;
         }
-        if(!Peso){
-            append += `${personajeTabla}.Peso = @Peso,`;
+        if(Peso){
+            append += `${personajeTabla}.Peso = @Peso, `;
         }
-        if(!Pelicula){
-            append += `${peliserieTabla}.Pelicula = @Pelicula,`;
+        if(Pelicula){
+            append += `${peliserieTabla}.Id = @Pelicula, `;
         }
         if(append == "WHERE "){
             append = "";
         }
         else{
-            append = append.substring(0,append.length-1);
+            append = append.substring(0,append.length-2);
         }
+        append += " GROUP BY Personajes.Id, Personajes.Edad, Personajes.Imagen, Personajes.Nombre, Personajes.Peso";
+        console.log(`${personajeTabla}.Imagen, ${personajeTabla}.Peso, ${personajeTabla}.Edad, ${personajeTabla}.Nombre, ${personajeTabla}.Id, STRING_AGG(${peliserieTabla}.Titulo, ', ') AS Movies 
+        FROM ${personajeTabla} LEFT JOIN ${intermediaTabla}
+    ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id ` + append)
         const response = await pool.request()
         .input('Nombre',sql.NChar, Nombre ?? '')
         .input('Edad',sql.Int, Edad ?? 0)
         .input('Peso',sql.Float, Peso ?? 0)
         .input('Pelicula', sql.Int, Pelicula ?? 0)
-        .query(`SELECT ${personajeTabla}.Imagen, ${personajeTabla}.Nombre, ${personajeTabla}.Id from ${personajeTabla} LEFT JOIN ${intermediaTabla}
+        .query(`SELECT ${personajeTabla}.Imagen, ${personajeTabla}.Peso, ${personajeTabla}.Edad, ${personajeTabla}.Nombre, ${personajeTabla}.Id, STRING_AGG(${peliserieTabla}.Titulo, ', ') AS Movies 
+        FROM ${personajeTabla} LEFT JOIN ${intermediaTabla}
         ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id ` + append);
-        console.log(response);
+        
         return response.recordset;
     }
     detallePersonaje = async (id) => {

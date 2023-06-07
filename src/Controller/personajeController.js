@@ -24,7 +24,8 @@ const personajeService = new PersonajeService();
 
 */
 router.get('',Authenticate,  async (req, res) => {
-    const personaje = await personajeService.listadoPersonaje(req.params.name, req.params.age, req.params.movies, req.params.weight);
+    
+    const personaje = await personajeService.listadoPersonaje(req.query.name, req.query.age, req.query.weight, req.query.movies );
     return res.status(200).json(personaje);
 });
 

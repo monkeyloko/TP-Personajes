@@ -24,8 +24,14 @@ app.use(express.json());
         Hacer validaciones de status
 
     Hacer validaciones de status
+  
     
+    DOCUMENTACION DE POSTMAN (?????)
 */
+
+
+
+
 router.get('', Authenticate, async (req, res) => {
     const peliserie = await peliserieService.listadoPelicula();
     return res.status(200).json(peliserie);
