@@ -63,20 +63,19 @@ export class PeliSerieService {
     
     listadoPelicula = async (Nombre, order) => {
         const pool = await sql.connect(config);
-        let append = "WHERE ";
+        let append = "";
         if(Nombre){
-            append += `${peliserieTabla}.Titulo = @Nombre`;
+            append += `WHERE ${peliserieTabla}.Titulo = @Nombre`;
         }
         if(order == "ASC" || order == "DESC"){
-            append += " ORDER BY " + order;
-        }
-        if(append == "WHERE "){
-            append = "";
+            append += " ORDER BY FechaCreacion " + order;
         }
         const response = await pool.request()
         .input('Nombre',sql.NChar, Nombre ?? '')
         .query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla} ` + append);
+       
         console.log(response.recordset)
+
 
         return response.recordset;
 

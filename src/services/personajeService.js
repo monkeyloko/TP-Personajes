@@ -28,7 +28,6 @@ export class PersonajeService {
             .input('Historia',sql.NChar, personaje?.Historia ?? '')
             .query(`INSERT INTO ${personajeTabla}(Nombre, Imagen, Edad, Peso, Historia) VALUES (@Nombre, @Imagen, @Edad, @Peso, @Historia)`);
         console.log(response)
-
         return response.recordset;
     }
 
