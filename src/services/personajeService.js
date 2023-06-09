@@ -60,34 +60,30 @@ export class PersonajeService {
         const pool = await sql.connect(config);
         let append = "WHERE ";
         if(Nombre){
-            console.log("fortnite")
-            append += `${personajeTabla}.Nombre = @Nombre, `;
+            append += `${personajeTabla}.Nombre = @Nombre AND `;
         }
         if(Edad){
-            append += `${personajeTabla}.Edad = @Edad, `;
+            append += `${personajeTabla}.Edad = @Edad AND `;
         }
         if(Peso){
-            append += `${personajeTabla}.Peso = @Peso, `;
+            append += `${personajeTabla}.Peso = @Peso AND `;
         }
         if(Pelicula){
-            append += `${peliserieTabla}.Id = @Pelicula, `;
+            append += `${peliserieTabla}.Id = @Pelicula AND `;
         }
         if(append == "WHERE "){
             append = "";
         }
         else{
-            append = append.substring(0,append.length-2);
+            append = append.substring(0,append.length-4);
         }
-        append += " GROUP BY Personajes.Id, Personajes.Edad, Personajes.Imagen, Personajes.Nombre, Personajes.Peso";
-        console.log(`${personajeTabla}.Imagen, ${personajeTabla}.Peso, ${personajeTabla}.Edad, ${personajeTabla}.Nombre, ${personajeTabla}.Id, STRING_AGG(${peliserieTabla}.Titulo, ', ') AS Movies 
-        FROM ${personajeTabla} LEFT JOIN ${intermediaTabla}
-    ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id ` + append)
+        append += " GROUP BY Personajes.Id, Personajes.Imagen, Personajes.Nombre";
         const response = await pool.request()
         .input('Nombre',sql.NChar, Nombre ?? '')
         .input('Edad',sql.Int, Edad ?? 0)
         .input('Peso',sql.Float, Peso ?? 0)
         .input('Pelicula', sql.Int, Pelicula ?? 0)
-        .query(`SELECT ${personajeTabla}.Imagen, ${personajeTabla}.Peso, ${personajeTabla}.Edad, ${personajeTabla}.Nombre, ${personajeTabla}.Id, STRING_AGG(${peliserieTabla}.Titulo, ', ') AS Movies 
+        .query(`SELECT ${personajeTabla}.Imagen, ${personajeTabla}.Nombre, ${personajeTabla}.Id
         FROM ${personajeTabla} LEFT JOIN ${intermediaTabla}
         ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id ` + append);
         
@@ -102,8 +98,10 @@ export class PersonajeService {
         LEFT OUTER JOIN ${intermediaTabla}
         ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT OUTER JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id WHERE Personajes.Id = @id GROUP BY ${personajeTabla}.Id, ${personajeTabla}.Edad, ${personajeTabla}.Imagen, ${personajeTabla}.Historia, ${personajeTabla}.Nombre, ${personajeTabla}.Peso`);
         console.log(response);
-        return response.recordset;
-    }
+        response.recordset[0].Movies = response.recordset[0].Movies.split(', ')
+        console.log(response.recordset[0].Movies);
+
+        return response.recordset;    }
 
         
 

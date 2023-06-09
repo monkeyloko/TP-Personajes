@@ -61,12 +61,25 @@ export class PeliSerieService {
         return response.recordset;
     }
     
-    listadoPelicula = async () => {
+    listadoPelicula = async (Nombre, order) => {
         const pool = await sql.connect(config);
-        const response = await pool.request().query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla}`);
+        let append = "WHERE ";
+        if(Nombre){
+            append += `${peliserieTabla}.Titulo = @Nombre`;
+        }
+        if(order == "ASC" || order == "DESC"){
+            append += " ORDER BY " + order;
+        }
+        if(append == "WHERE "){
+            append = "";
+        }
+        const response = await pool.request()
+        .input('Nombre',sql.NChar, Nombre ?? '')
+        .query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla} ` + append);
         console.log(response.recordset)
-        console.log("2");
+
         return response.recordset;
+
     }
 
     detallePeliserie = async (id) => {

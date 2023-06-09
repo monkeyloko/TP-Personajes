@@ -33,7 +33,7 @@ app.use(express.json());
 
 
 router.get('', Authenticate, async (req, res) => {
-    const peliserie = await peliserieService.listadoPelicula();
+    const peliserie = await peliserieService.listadoPelicula(req.query.name, req.query.order);
     return res.status(200).json(peliserie);
 });
 
