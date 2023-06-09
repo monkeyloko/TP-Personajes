@@ -99,8 +99,8 @@ export class PersonajeService {
         console.log(response);
         response.recordset[0].Movies = response.recordset[0].Movies.split(', ')
         console.log(response.recordset[0].Movies);
-
-        return response.recordset;    }
+        return response.recordset;    
+    }
 
         
 

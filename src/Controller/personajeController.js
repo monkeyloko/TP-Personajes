@@ -34,7 +34,7 @@ router.get('/:id',Authenticate,  async (req, res) => {
     return res.status(200).json(personaje)
 });
 router.post('',Authenticate,  async (req, res) => {
-    const personaje = await personajeService.createpersonaje(req.body);
+    const personaje = await personajeService.createPersonaje(req.body);
     return res.status(201).json(personaje);
 });
 router.put('/:id',Authenticate,  async (req, res) => {
