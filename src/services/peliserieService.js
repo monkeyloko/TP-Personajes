@@ -58,7 +58,7 @@ export class PeliSerieService {
             .input('Id',sql.Int, id)
             .query(`DELETE FROM ${peliserieTabla} WHERE Id = @id`);
         console.log(response)
-        return response.recordset;
+        return response;
     }
     
     listadoPelicula = async (Nombre, order) => {
@@ -73,12 +73,8 @@ export class PeliSerieService {
         const response = await pool.request()
         .input('Nombre',sql.NChar, Nombre ?? '')
         .query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla} ` + append);
-       
-        console.log(response.recordset)
-
-
+        console.log(response.recordset);
         return response.recordset;
-
     }
 
     detallePeliserie = async (id) => {
