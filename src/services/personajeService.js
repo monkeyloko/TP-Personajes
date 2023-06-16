@@ -97,8 +97,9 @@ export class PersonajeService {
         LEFT OUTER JOIN ${intermediaTabla}
         ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT OUTER JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id WHERE Personajes.Id = @id GROUP BY ${personajeTabla}.Id, ${personajeTabla}.Edad, ${personajeTabla}.Imagen, ${personajeTabla}.Historia, ${personajeTabla}.Nombre, ${personajeTabla}.Peso`);
         console.log(response);
-        response.recordset[0].Movies = response.recordset[0].Movies.split(', ')
-        console.log(response.recordset[0].Movies);
+        if (response?.recordset[0]?.Movies) {
+            response.recordset[0].Movies = response.recordset[0].Movies.split(', ');
+        }        
         return response.recordset;    
     }
 

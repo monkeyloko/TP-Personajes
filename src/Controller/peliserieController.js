@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import express from 'express';
+import { PeliSerie } from '../models/peliserie.js';
 import { Authenticate } from '../common/jwt.strategy.js';
 import { PeliSerieService } from '../services/PeliSerieService.js';
 const router = Router();
@@ -52,17 +53,39 @@ router.put('/:id', Authenticate, async (req, res) => {
     if(id != req.body.Id){
         return res.status(400).send();
     }
-    const Calificacion = req.body.Calificacion
+    let Calificacion = req.body.Calificacion
     if(Calificacion<1 || Calificacion > 5){
         return res.status(400).send();
     }
-    //Hacer que si cambiamos solo un atributo se cambie solo eso y no todo JI!
-    const peliserie = await peliserieService.detallePeliserie(id);       
-    
-    const result = await peliserieService.updatePeliserieById(id, fortnite );
-    if(update.rowsAffected[0] == 0){
-        res.status(404).send();
+    const peliserie = await peliserieService.detallePeliserie(id);
+    if ( peliserie.length == 0 || !peliserie) {
+        return res.status(404).send();
     }
+    let Imagen = req.body.Imagen;
+    let Titulo = req.body.Titulo;
+    let FechaCreacion = req.body.FechaCreacion;
+    console.log(peliserie.FechaCreacion);
+    console.log(FechaCreacion);
+    if(!Imagen){
+        Imagen = peliserie.Imagen;
+    }
+    if(!Titulo){
+        Titulo = peliserie.Titulo;
+    }
+    if(!FechaCreacion){
+        console.log(2)
+        FechaCreacion = peliserie.FechaCreacion;
+    }
+    if(!Calificacion && Calificacion != 0){
+        Calificacion = peliserie.Calificacion;
+    }
+    let newPeliserie = new PeliSerie();
+    newPeliserie.Imagen = Imagen;
+    newPeliserie.Titulo = Titulo;
+    newPeliserie.Calificacion = Calificacion;
+    newPeliserie.FechaCreacion = FechaCreacion;
+
+    const result = await peliserieService.updatePeliserieById(id, newPeliserie);
     return res.status(200).json(result);
 });
 

@@ -21,7 +21,6 @@ const personajeService = new PersonajeService();
         Hacer validaciones de status
 
     Hacer validaciones de status
-
 */
 router.get('',Authenticate,  async (req, res) => {
     

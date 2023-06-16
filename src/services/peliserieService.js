@@ -85,8 +85,10 @@ export class PeliSerieService {
         FROM ${peliserieTabla}
         LEFT OUTER JOIN ${intermediaTabla}
         ON ${peliserieTabla}.Id = ${intermediaTabla}.fkPeliSeries LEFT OUTER JOIN ${personajeTabla} ON ${intermediaTabla}.fkPersonaje = ${personajeTabla}.Id WHERE ${peliserieTabla}.Id = @id GROUP BY ${peliserieTabla}.Id, ${peliserieTabla}.Imagen, ${peliserieTabla}.Titulo, ${peliserieTabla}.FechaCreacion, ${peliserieTabla}.Calificacion`);
-        console.log(response);
-        return response.recordset;
+        if (response?.recordset[0]?.Personajes) {
+            response.recordset[0].Personajes = response.recordset[0].Personajes.split(', ');
+        }
+        return response.recordset[0];
     }
     
 }
