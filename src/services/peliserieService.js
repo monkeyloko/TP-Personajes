@@ -49,7 +49,7 @@ export class PeliSerieService {
             .input('Calificacion',sql.Float, peliserie?.Calificacion ?? 0)
             .query(`UPDATE ${peliserieTabla} SET Imagen = @Imagen, Titulo = @Titulo, FechaCreacion = @FechaCreacion, Calificacion = @Calificacion WHERE Id = @Id`);
         console.log(response)
-        return response.recordset;
+        return response;
     }
 
     deletePeliserieById = async (id) => {

@@ -58,7 +58,7 @@ router.put('/:id', Authenticate, async (req, res) => {
         return res.status(400).send();
     }
     const peliserie = await peliserieService.detallePeliserie(id);
-    if ( peliserie.length == 0 || !peliserie) {
+    if (!peliserie) {
         return res.status(404).send();
     }
     let Imagen = req.body.Imagen;

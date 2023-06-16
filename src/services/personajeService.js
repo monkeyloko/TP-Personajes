@@ -53,7 +53,7 @@ export class PersonajeService {
             .query(`DELETE FROM ${personajeTabla} WHERE id = @id`);
         console.log(response)
 
-        return response.recordset;
+        return response;
     }
     listadoPersonaje = async (Nombre, Edad, Peso, Pelicula) => {
         const pool = await sql.connect(config);
@@ -100,7 +100,7 @@ export class PersonajeService {
         if (response?.recordset[0]?.Movies) {
             response.recordset[0].Movies = response.recordset[0].Movies.split(', ');
         }        
-        return response.recordset;    
+        return response.recordset[0];    
     }
 
         
