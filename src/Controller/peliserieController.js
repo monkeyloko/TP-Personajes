@@ -35,26 +35,29 @@ app.use(express.json());
 
 router.get('', Authenticate, async (req, res) => {
     const peliserie = await peliserieService.listadoPelicula(req.query.name, req.query.order);
+    if (!peliserie || peliserie.length == 0) {
+        return res.status(404).json(peliserie);
+    }
     return res.status(200).json(peliserie);
 });
 
 router.post('', Authenticate, async (req, res) => {
     const peliserie = await peliserieService.createPeliserie(req.body);
     const Calificacion = req.body.Calificacion
-    if(Calificacion <1 || Calificacion > 5){
+    if (Calificacion < 1 || Calificacion > 5) {
         return res.status(400).send
-    } 
+    }
     return res.status(201).json(peliserie);
 });
 
 router.put('/:id', Authenticate, async (req, res) => {
     const id = req.params.id;
     console.log(id);
-    if(id != req.body.Id){
+    if (id != req.body.Id) {
         return res.status(400).send();
     }
     let Calificacion = req.body.Calificacion
-    if(Calificacion<1 || Calificacion > 5){
+    if (Calificacion < 1 || Calificacion > 5) {
         return res.status(400).send();
     }
     const peliserie = await peliserieService.detallePeliserie(id);
@@ -66,17 +69,16 @@ router.put('/:id', Authenticate, async (req, res) => {
     let FechaCreacion = req.body.FechaCreacion;
     console.log(peliserie.FechaCreacion);
     console.log(FechaCreacion);
-    if(!Imagen){
+    if (!Imagen) {
         Imagen = peliserie.Imagen;
     }
-    if(!Titulo){
+    if (!Titulo) {
         Titulo = peliserie.Titulo;
     }
-    if(!FechaCreacion){
-        console.log(2)
+    if (!FechaCreacion) {
         FechaCreacion = peliserie.FechaCreacion;
     }
-    if(!Calificacion && Calificacion != 0){
+    if (!Calificacion && Calificacion != 0) {
         Calificacion = peliserie.Calificacion;
     }
     let newPeliserie = new PeliSerie();
@@ -91,24 +93,24 @@ router.put('/:id', Authenticate, async (req, res) => {
 
 router.delete('/:id', Authenticate, async (req, res) => {
     const id = req.params.id;
-    if(id < 1){
+    if (id < 1) {
         return res.status(400).send();
     }
     const result = await peliserieService.deletePeliserieById(id);
     console.log(result);
-    if(result.rowsAffected[0] == 0){
+    if (result.rowsAffected[0] == 0) {
         return res.status(404).json(result);
-    }   
+    }
     return res.status(200).json(result);
 });
 
 router.get('/:id', Authenticate, async (req, res) => {
     const id = req.params.id;
-    if(id < 1){
+    if (id < 1) {
         return res.status(400).send();
     }
     const peliserie = await peliserieService.detallePeliserie(id);
-    if(!peliserie){
+    if (!peliserie) {
         return res.status(404).send();
     }
     return res.status(200).json(peliserie);
