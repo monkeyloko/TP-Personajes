@@ -1,0 +1,18 @@
+{
+	"info": {
+		"_postman_id": "a2cbc48d-c365-48c4-b49c-7c130208ccf6",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28098314"
+	},
+	"item": [
+		{
+			"name": "Token de autorización",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "7222a902-61f9-4d31-b7b3-969c59c3ea58",
+		"name": "Movies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28098314"
+	},
+	"item": [
+		{
+			"name": "All Movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/movies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"Imagen\":\"io\",\r\n        \"Titulo\": \"GoT\",    \r\n        \"FechaCreacion\": \"2017-11-09T00:00:00.000Z\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/movies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"Id\":5,\r\n        \"Titulo\": \"Game of Thrones\",\r\n        \"Imagen\":\"holaquetal\"\r\n        \r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/movies/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Movie",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/movies/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movies",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalle Movie",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda por parametro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/movies?name=avengers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "avengers"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda por parametro 2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/movies?order=ASC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movies"
+					],
+					"query": [
+						{
+							"key": "order",
+							"value": "ASC"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

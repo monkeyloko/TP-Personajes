@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "7de391e2-c756-4e1b-a0df-3d0a9b08e8ad",
+		"name": "Characters",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28098314"
+	},
+	"item": [
+		{
+			"name": "All Characters",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create Character",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"Imagen\": \"httpsblabla\",\r\n        \"Nombre\": \"Zheoden\",\r\n        \"Edad\": 6,\r\n        \"Peso\":50,\r\n        \"Historia\": \"En el corazón palpitante de NeoCity, un enigmático ser habitaba bajo la dualidad de Julian. Al amanecer, su alma se transformaba en un profesor de programación apasionado por encender la llama del conocimiento. Pero al caer la noche, emergía Zheoden, un justiciero imbuido de los dones de una araña radiactiva. Sus hilos de seda tejían destinos, enfrentando con valentía a los corruptos que asolaban la ciudad. Con su capa ondeando al viento, Zheoden se erigía como un símbolo de esperanza, un faro de luz en una urbe sumida en la desesperanza.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/characters/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"characters",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Character",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\":6,\r\n   \"Imagen\":\"hola.jpg\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/characters/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"characters",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Character",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/characters/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"characters",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detalle Personaje",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/characters/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"characters",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busqueda por parametro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/characters?name=hu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"characters"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "hu"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
