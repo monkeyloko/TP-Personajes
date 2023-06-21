@@ -7,9 +7,9 @@ const personajeTabla = process.env.DB_TABLA_PERSONAJES;
 const intermediaTabla = process.env.DB_TABLA_INTERMEDIA;
 
 export class PeliSerieService {
-/*
-    REVISAR INNER VS OUTER JOIN
-*/
+    /*
+        REVISAR INNER VS OUTER JOIN
+    */
     getPeliserie = async () => {
         const pool = await sql.connect(config);
         const response = await pool.request().query(`SELECT * from ${peliserieTabla}`);
@@ -20,20 +20,20 @@ export class PeliSerieService {
     getPeliserieById = async (id) => {
         const pool = await sql.connect(config);
         const response = await pool.request()
-            .input('Id',sql.Int, id)
+            .input('Id', sql.Int, id)
             .query(`SELECT * from ${peliserieTabla} where Id = @id`);
         console.log(response)
         return response.recordset[0];
     }
 
     createPeliserie = async (peliserie
-        ) => {
+    ) => {
         const pool = await sql.connect(config);
         const response = await pool.request()
-            .input('Imagen',sql.NChar, peliserie?.Imagen ?? '')
-            .input('Titulo',sql.NChar, peliserie?.Titulo ?? '')
-            .input('FechaCreacion',sql.NChar, peliserie?.FechaCreacion ?? '')
-            .input('Calificacion',sql.Float, peliserie?.Calificacion ?? 0)
+            .input('Imagen', sql.NChar, peliserie?.Imagen ?? '')
+            .input('Titulo', sql.NChar, peliserie?.Titulo ?? '')
+            .input('FechaCreacion', sql.NChar, peliserie?.FechaCreacion ?? '')
+            .input('Calificacion', sql.Float, peliserie?.Calificacion ?? 0)
             .query(`INSERT INTO ${peliserieTabla}(Imagen, Titulo, FechaCreacion, Calificacion) VALUES (@Imagen, @Titulo, @FechaCreacion, @Calificacion)`);
         console.log(response)
         return response.recordset;
@@ -42,11 +42,11 @@ export class PeliSerieService {
     updatePeliserieById = async (id, peliserie) => {
         const pool = await sql.connect(config);
         const response = await pool.request()
-            .input('Id',sql.Int, id)
-            .input('Imagen',sql.NChar, peliserie?.Imagen ?? '')
-            .input('Titulo',sql.NChar, peliserie?.Titulo ?? '')
-            .input('FechaCreacion',sql.Date, peliserie?.FechaCreacion ?? null)
-            .input('Calificacion',sql.Float, peliserie?.Calificacion ?? 0)
+            .input('Id', sql.Int, id)
+            .input('Imagen', sql.NChar, peliserie?.Imagen ?? '')
+            .input('Titulo', sql.NChar, peliserie?.Titulo ?? '')
+            .input('FechaCreacion', sql.Date, peliserie?.FechaCreacion ?? null)
+            .input('Calificacion', sql.Float, peliserie?.Calificacion ?? 0)
             .query(`UPDATE ${peliserieTabla} SET Imagen = @Imagen, Titulo = @Titulo, FechaCreacion = @FechaCreacion, Calificacion = @Calificacion WHERE Id = @Id`);
         console.log(response)
         return response;
@@ -55,24 +55,24 @@ export class PeliSerieService {
     deletePeliserieById = async (id) => {
         const pool = await sql.connect(config);
         const response = await pool.request()
-            .input('Id',sql.Int, id)
+            .input('Id', sql.Int, id)
             .query(`DELETE FROM ${peliserieTabla} WHERE Id = @id`);
         console.log(response)
         return response;
     }
-    
+
     listadoPelicula = async (Nombre, order) => {
         const pool = await sql.connect(config);
         let append = "";
-        if(Nombre){
-            append += `WHERE ${peliserieTabla}.Titulo = @Nombre`;
+        if (Nombre) {
+            append += `WHERE ${peliserieTabla}.Titulo LIKE '%' + @Nombre + '%'`;
         }
-        if(order == "ASC" || order == "DESC"){
+        if (order == "ASC" || order == "DESC") {
             append += " ORDER BY FechaCreacion " + order;
         }
         const response = await pool.request()
-        .input('Nombre',sql.NChar, Nombre ?? '')
-        .query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla} ` + append);
+            .input('Nombre', sql.NChar, Nombre ?? '')
+            .query(`SELECT Id, Titulo, FechaCreacion from ${peliserieTabla} ` + append);
         console.log(response.recordset);
         return response.recordset;
     }
@@ -80,8 +80,8 @@ export class PeliSerieService {
     detallePeliserie = async (id) => {
         const pool = await sql.connect(config);
         const response = await pool.request()
-        .input('id',sql.Int, id)
-        .query(`SELECT  ${peliserieTabla}.*, STRING_AGG(${personajeTabla}.Nombre, ', ') AS Personajes
+            .input('id', sql.Int, id)
+            .query(`SELECT  ${peliserieTabla}.*, STRING_AGG(${personajeTabla}.Nombre, ', ') AS Personajes
         FROM ${peliserieTabla}
         LEFT OUTER JOIN ${intermediaTabla}
         ON ${peliserieTabla}.Id = ${intermediaTabla}.fkPeliSeries LEFT OUTER JOIN ${personajeTabla} ON ${intermediaTabla}.fkPersonaje = ${personajeTabla}.Id WHERE ${peliserieTabla}.Id = @id GROUP BY ${peliserieTabla}.Id, ${peliserieTabla}.Imagen, ${peliserieTabla}.Titulo, ${peliserieTabla}.FechaCreacion, ${peliserieTabla}.Calificacion`);
@@ -90,5 +90,5 @@ export class PeliSerieService {
         }
         return response.recordset[0];
     }
-    
+
 }
