@@ -139,5 +139,5 @@ Endpoint: GET /movies
 
 Functionality: Search movies based on a parameter
 
-
-Made by: Santiago Doff and Joaquin Maceira
+---
+Made by: **Santiago Doff** and **Joaquin Maceira**
