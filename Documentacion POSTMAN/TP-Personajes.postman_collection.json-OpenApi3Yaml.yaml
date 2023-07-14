@@ -1,0 +1,309 @@
+openapi: 3.0.0
+info:
+  title: TP-Personajes
+  contact: {}
+  version: '1.0'
+servers:
+- url: http://localhost:5000
+  variables: {}
+paths:
+  /:
+    get:
+      tags:
+      - Misc
+      summary: Token de autorización
+      operationId: Tokendeautorización
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /characters:
+    post:
+      tags:
+      - Misc
+      summary: Create Character
+      operationId: CreateCharacter
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateCharacterRequest'
+              - example:
+                  Imagen: httpsblabla
+                  Nombre: Zheoden
+                  Edad: 6
+                  Peso: 50
+                  Historia: En el corazón palpitante de NeoCity, un enigmático ser habitaba bajo la dualidad de Julian. Al amanecer, su alma se transformaba en un profesor de programación apasionado por encender la llama del conocimiento. Pero al caer la noche, emergía Zheoden, un justiciero imbuido de los dones de una araña radiactiva. Sus hilos de seda tejían destinos, enfrentando con valentía a los corruptos que asolaban la ciudad. Con su capa ondeando al viento, Zheoden se erigía como un símbolo de esperanza, un faro de luz en una urbe sumida en la desesperanza.
+            example:
+              Imagen: httpsblabla
+              Nombre: Zheoden
+              Edad: 6
+              Peso: 50
+              Historia: En el corazón palpitante de NeoCity, un enigmático ser habitaba bajo la dualidad de Julian. Al amanecer, su alma se transformaba en un profesor de programación apasionado por encender la llama del conocimiento. Pero al caer la noche, emergía Zheoden, un justiciero imbuido de los dones de una araña radiactiva. Sus hilos de seda tejían destinos, enfrentando con valentía a los corruptos que asolaban la ciudad. Con su capa ondeando al viento, Zheoden se erigía como un símbolo de esperanza, un faro de luz en una urbe sumida en la desesperanza.
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    get:
+      tags:
+      - Misc
+      summary: Busqueda character por parametro
+      operationId: Busquedacharacterporparametro
+      parameters:
+      - name: name
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: hu
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /characters/6:
+    put:
+      tags:
+      - Misc
+      summary: Update Character
+      operationId: UpdateCharacter
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateCharacterRequest'
+              - example:
+                  Id: 6
+                  Imagen: hola.jpg
+            example:
+              Id: 6
+              Imagen: hola.jpg
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /characters/7:
+    delete:
+      tags:
+      - Misc
+      summary: Eliminar Character
+      operationId: EliminarCharacter
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /characters/4:
+    get:
+      tags:
+      - Misc
+      summary: Detalle Personaje
+      operationId: DetallePersonaje
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /movies:
+    get:
+      tags:
+      - Misc
+      summary: All Movies
+      operationId: AllMovies
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    post:
+      tags:
+      - Misc
+      summary: Create Movie
+      operationId: CreateMovie
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/CreateMovieRequest'
+              - example:
+                  Imagen: io
+                  Titulo: GoT
+                  FechaCreacion: 2017-11-09T00:00:00.000Z
+            example:
+              Imagen: io
+              Titulo: GoT
+              FechaCreacion: 2017-11-09T00:00:00.000Z
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+  /movies/5:
+    put:
+      tags:
+      - Misc
+      summary: Update Movie
+      operationId: UpdateMovie
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/UpdateMovieRequest'
+              - example:
+                  Id: 5
+                  Titulo: Game of Thrones
+                  Imagen: holaquetal
+            example:
+              Id: 5
+              Titulo: Game of Thrones
+              Imagen: holaquetal
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+    delete:
+      tags:
+      - Misc
+      summary: Eliminar Movie
+      operationId: EliminarMovie
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+      - bearer: []
+components:
+  schemas:
+    CreateCharacterRequest:
+      title: CreateCharacterRequest
+      required:
+      - Imagen
+      - Nombre
+      - Edad
+      - Peso
+      - Historia
+      type: object
+      properties:
+        Imagen:
+          type: string
+        Nombre:
+          type: string
+        Edad:
+          type: integer
+          format: int32
+        Peso:
+          type: integer
+          format: int32
+        Historia:
+          type: string
+      example:
+        Imagen: httpsblabla
+        Nombre: Zheoden
+        Edad: 6
+        Peso: 50
+        Historia: En el corazón palpitante de NeoCity, un enigmático ser habitaba bajo la dualidad de Julian. Al amanecer, su alma se transformaba en un profesor de programación apasionado por encender la llama del conocimiento. Pero al caer la noche, emergía Zheoden, un justiciero imbuido de los dones de una araña radiactiva. Sus hilos de seda tejían destinos, enfrentando con valentía a los corruptos que asolaban la ciudad. Con su capa ondeando al viento, Zheoden se erigía como un símbolo de esperanza, un faro de luz en una urbe sumida en la desesperanza.
+    UpdateCharacterRequest:
+      title: UpdateCharacterRequest
+      required:
+      - Id
+      - Imagen
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Imagen:
+          type: string
+      example:
+        Id: 6
+        Imagen: hola.jpg
+    CreateMovieRequest:
+      title: CreateMovieRequest
+      required:
+      - Imagen
+      - Titulo
+      - FechaCreacion
+      type: object
+      properties:
+        Imagen:
+          type: string
+        Titulo:
+          type: string
+        FechaCreacion:
+          type: string
+      example:
+        Imagen: io
+        Titulo: GoT
+        FechaCreacion: 2017-11-09T00:00:00.000Z
+    UpdateMovieRequest:
+      title: UpdateMovieRequest
+      required:
+      - Id
+      - Titulo
+      - Imagen
+      type: object
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Titulo:
+          type: string
+        Imagen:
+          type: string
+      example:
+        Id: 5
+        Titulo: Game of Thrones
+        Imagen: holaquetal
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+- name: Misc
+  description: ''
