@@ -1,15 +1,37 @@
 
 # TP-Personajes
-API Documentation for TP-Personajes
+----
+This project is an API that interacts with a database of characters and movies.
+It provides various endpoints to perform **CRUD** operations and search functionalities on characters and movies.
+The API allows *creating*, *updating*, and *deleting* characters and movies.
+Additionally, it provides endpoints to retrieve details of specific characters, search characters by parameters, and retrieve all movies.
+Users can also create new movies, update existing movies, delete movies, and search movies based on parameters.
+The project is designed to facilitate the management and retrieval of data related to characters and movies.
 
 ## Installation
 
-1. Clone / Download Repository
+
+
+
+
+
+####1. Clone / Download Repository
+
 ```bash
 git clone https://github.com/monkeyloko/TP-Personajes.git
 ```
 
-2. Install dependencies
+####2. Install everything needed to run a NodeJS project.
+
+- [NodeJS](https://nodejs.org/es)
+
+
+- Install express.js ```
+                        npm i express
+                    ```
+
+
+####3. Install dependencies
 
 ```bash
 npm i
@@ -34,7 +56,28 @@ When you see the message `Server is listening on port: 5000` in the terminal, it
 
 ## API Endpoints
 
+To use the api endpoints with Swagger you must use this [url](localhost:5000/api-docs)
 
+1. Firstly, click on the auth/login endpoint.
+
+![](readmeIMG/swagger1.PNG)
+
+
+2. **Copy** the token 
+
+![](readmeIMG/swagger2.PNG)
+
+
+3. Click on ***Authorize :unlock:*** 
+
+![](readmeIMG/swagger4.PNG)
+
+4. **Paste** the token
+
+![](readmeIMG/swagger4.PNG)
+
+---
+## Api Endpoints Explanation.
 
 ### Create Character
 
@@ -44,19 +87,19 @@ Functionality: Create a new character
 
 ### Update Character
 
-Endpoint: PUT /characters/6
+Endpoint: PUT /characters/{id}
 
 Functionality: Update an existing character
 
 ### Delete Character
 
-Endpoint: DELETE /characters/7
+Endpoint: DELETE /characters/{id}
 
 Functionality: Delete an existing character
 
 ### Character Details
 
-Endpoint: GET /characters/4
+Endpoint: GET /characters/{id}
 
 Functionality: Get details of a specific character
 
@@ -80,13 +123,13 @@ Functionality: Create a new movie
 
 ### Update Movie
 
-Endpoint: PUT /movies/5
+Endpoint: PUT /movies/{id}
 
 Functionality: Update an existing movie
 
 ### Delete Movie
 
-Endpoint: DELETE /movies/5
+Endpoint: DELETE /movies/{id}
 
 Functionality: Delete an existing movie
 
