@@ -1,415 +1,475 @@
 {
 	"info": {
-		"_postman_id": "7de391e2-c756-4e1b-a0df-3d0a9b08e8ad",
+		"_postman_id": "35582839-ca10-435b-bdf0-572cabc36775",
 		"name": "TP-Personajes",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "28098314"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Token de autorización",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "All Characters",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "Create Character",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Token de autorización",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"Imagen\": \"httpsblabla\",\r\n        \"Nombre\": \"Zheoden\",\r\n        \"Edad\": 6,\r\n        \"Peso\":50,\r\n        \"Historia\": \"En el corazón palpitante de NeoCity, un enigmático ser habitaba bajo la dualidad de Julian. Al amanecer, su alma se transformaba en un profesor de programación apasionado por encender la llama del conocimiento. Pero al caer la noche, emergía Zheoden, un justiciero imbuido de los dones de una araña radiactiva. Sus hilos de seda tejían destinos, enfrentando con valentía a los corruptos que asolaban la ciudad. Con su capa ondeando al viento, Zheoden se erigía como un símbolo de esperanza, un faro de luz en una urbe sumida en la desesperanza.\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5000/characters/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"characters",
-						""
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Update Character",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
+			"name": "Characters",
+			"item": [
+				{
+					"name": "All Characters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJaOFNTRU9NSUZQZnZWckNRRk5AaG90bWFpbC5jb20iLCJpYXQiOjE2ODkzMzk1MjAsImV4cCI6MTc2NzExNzI5NywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiWjhTU0VPTUlGUGZ2VnJDUUZOIn0.jQA89LLrbyp1xuG1IeIb0qs6ws523lKFbufE9YbH9Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/characters",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"characters"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"Id\":6,\r\n   \"Imagen\":\"hola.jpg\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "Busqueda character por parametro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/characters?name=hu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"characters"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "hu"
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:5000/characters/6",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"characters",
-						"6"
-					]
+				{
+					"name": "Create Character",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"Imagen\": \"httpsblabla\",\r\n        \"Nombre\": \"Zheoden\",\r\n        \"Edad\": 6,\r\n        \"Peso\":50,\r\n        \"Historia\": \"En el corazón palpitante de NeoCity, un enigmático ser habitaba bajo la dualidad de Julian. Al amanecer, su alma se transformaba en un profesor de programación apasionado por encender la llama del conocimiento. Pero al caer la noche, emergía Zheoden, un justiciero imbuido de los dones de una araña radiactiva. Sus hilos de seda tejían destinos, enfrentando con valentía a los corruptos que asolaban la ciudad. Con su capa ondeando al viento, Zheoden se erigía como un símbolo de esperanza, un faro de luz en una urbe sumida en la desesperanza.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/characters/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"characters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Character",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Id\":6,\r\n   \"Imagen\":\"hola.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/characters/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"characters",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Character",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/characters/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"characters",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalle Personaje",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/characters/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"characters",
+								"4"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "Eliminar Character",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
+			"name": "Movies",
+			"item": [
+				{
+					"name": "All Movies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								""
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/characters/7",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"characters",
-						"7"
-					]
+				{
+					"name": "Create Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"Imagen\":\"io\",\r\n        \"Titulo\": \"GoT\",    \r\n        \"FechaCreacion\": \"2017-11-09T00:00:00.000Z\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"Id\":5,\r\n        \"Titulo\": \"Game of Thrones\",\r\n        \"Imagen\":\"holaquetal\"\r\n        \r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detalle Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJaOFNTRU9NSUZQZnZWckNRRk5AaG90bWFpbC5jb20iLCJpYXQiOjE2ODkzMzk1MjAsImV4cCI6MTc2NzExNzI5NywiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiWjhTU0VPTUlGUGZ2VnJDUUZOIn0.jQA89LLrbyp1xuG1IeIb0qs6ws523lKFbufE9YbH9Bg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda movie por parametro 2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies?order=ASC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "order",
+									"value": "ASC"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busqueda movie por parametro",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/movies?name=avengers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "avengers"
+								}
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Detalle Personaje",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/characters/4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"characters",
-						"4"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Busqueda character por parametro",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/characters?name=hu",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"characters"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "hu"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "All Movies",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/movies/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"movies",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Movie",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n        \"Imagen\":\"io\",\r\n        \"Titulo\": \"GoT\",    \r\n        \"FechaCreacion\": \"2017-11-09T00:00:00.000Z\"\r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5000/movies/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"movies",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Movie",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "    {\r\n        \"Id\":5,\r\n        \"Titulo\": \"Game of Thrones\",\r\n        \"Imagen\":\"holaquetal\"\r\n        \r\n    }",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5000/movies/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"movies",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Eliminar Movie",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/movies/5",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"movies",
-						"5"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Detalle Movie",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "Busqueda movie por parametro",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/movies?name=avengers",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"movies"
-					],
-					"query": [
-						{
-							"key": "name",
-							"value": "avengers"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Busqueda movie por parametro 2",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiY3VzdG9tIHBheWxvYWQiLCJ1c2VyRW1haWwiOiJpbjBOajJ5SERoQ1NCRzlybG9AaG90bWFpbC5jb20iLCJpYXQiOjE2ODcyOTc1NzMsImV4cCI6MTc2NTA3NTM1MCwiYXVkIjpbImh0dHA6Ly9sb2NhbGhvc3Q6NTAwMC8iXSwiaXNzIjoiaHR0cHM6Ly93d3cucGFsYWxhLmlvIiwic3ViIjoiaW4wTmoyeUhEaENTQkc5cmxvIn0.9I3thSX_KFCItqmkJI1q86bPdNMmJ5Jn01OD_NUKw1o",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/movies?order=ASC",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"movies"
-					],
-					"query": [
-						{
-							"key": "order",
-							"value": "ASC"
-						}
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	]
 }
