@@ -1,4 +1,4 @@
-mono /tmp/uvkDSkBHAm.exe
+
 # TP-Personajes
 API Documentation for TP-Personajes
 
@@ -15,14 +15,13 @@ git clone https://github.com/monkeyloko/TP-Personajes.git
 npm i
 ```
 
-ERROR!
 ## Set up
 
-1. Open Microsoft SQL Server Manegment Studio
+1. Create MSSQL Database
 
 2. Run the scripts "***DAI-Personajes.sql***" and "***01 - CreateLoginUser.sql***" in SQL
 
-3. Open the file **.env** and *paste* the name of the server in ***DB_SERVER***
+3. Open the file **.env** and paste the name of the server in ***DB_SERVER***
 
 ## Running the Project
 
@@ -34,6 +33,8 @@ If there was an issue and the project didn't start, it could be due to the follo
 When you see the message `Server is listening on port: 5000` in the terminal, it means the project is running successfully
 
 ## API Endpoints
+
+
 
 ### Create Character
 
