@@ -59,11 +59,11 @@ When you see the message `Server is listening on port: 5000` in the terminal, it
 To use the api endpoints with Swagger you must use this [url](localhost:5000/api-docs)
 
 1. Firstly, click on the auth/login endpoint.
-![](readmeIMG/swagger1.png)
+![](readmeIMG/swagger1.PNG)
 
 
 2. **Copy** the token 
-![](readmeIMG/swagger2.png)
+![](readmeIMG/swagger2.PNG)
 
 
 3. Click on ***Authorize :unlock:*** 
