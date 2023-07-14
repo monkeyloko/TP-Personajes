@@ -15,13 +15,13 @@ The project is designed to facilitate the management and retrieval of data relat
 
 
 
-###1. Clone / Download Repository
+1. Clone / Download Repository
 
 ```bash
 git clone https://github.com/monkeyloko/TP-Personajes.git
 ```
 
-###2. Install everything needed to run a NodeJS project.
+2. Install everything needed to run a NodeJS project.
 
 - [NodeJS](https://nodejs.org/es)
 
@@ -31,7 +31,7 @@ git clone https://github.com/monkeyloko/TP-Personajes.git
                     ```
 
 
-###3. Install dependencies
+3. Install dependencies
 
 ```bash
 npm i
