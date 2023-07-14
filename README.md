@@ -1,6 +1,6 @@
 
 # TP-Personajes
-----
+
 This project is an API that interacts with a database of characters and movies.
 It provides various endpoints to perform **CRUD** operations and search functionalities on characters and movies.
 The API allows *creating*, *updating*, and *deleting* characters and movies.
@@ -54,7 +54,7 @@ If there was an issue and the project didn't start, it could be due to the follo
 
 When you see the message `Server is listening on port: 5000` in the terminal, it means the project is running successfully
 
-## API Endpoints
+## API Authentication
 
 To use the api endpoints with Swagger you must use this [url](localhost:5000/api-docs)
 
