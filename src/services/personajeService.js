@@ -92,7 +92,7 @@ export class PersonajeService {
         const pool = await sql.connect(config);
         const response = await pool.request()
             .input('id', sql.Int, id)
-            .query(`SELECT ${personajeTabla}.*, STRING_AGG(${peliserieTabla}.Titulo, ', ') AS Movies
+            .query(`SELECT ${personajeTabla}.*, JSON_ARRAYAGG(JSON_OBJECT('Titulo', ${peliserieTabla}.Titulo, 'FechaCreacion', ${peliserieTabla}.FechaCreacion, 'Calificacion', ${peliserieTabla}.Calificacion)) AS Movies
         FROM ${personajeTabla}
         LEFT OUTER JOIN ${intermediaTabla}
         ON ${personajeTabla}.Id = ${intermediaTabla}.fkPersonaje LEFT OUTER JOIN ${peliserieTabla} ON ${intermediaTabla}.fkPeliSeries = ${peliserieTabla}.Id WHERE Personajes.Id = @id GROUP BY ${personajeTabla}.Id, ${personajeTabla}.Edad, ${personajeTabla}.Imagen, ${personajeTabla}.Historia, ${personajeTabla}.Nombre, ${personajeTabla}.Peso`);
@@ -100,6 +100,7 @@ export class PersonajeService {
         if (response?.recordset[0]?.Movies) {
             response.recordset[0].Movies = response.recordset[0].Movies.split(', ');
         }
+        console.log(response.recordset[0].Movies)
         return response.recordset[0];
     }
 

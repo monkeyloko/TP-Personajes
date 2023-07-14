@@ -1,0 +1,189 @@
+openapi: 3.0.0
+info:
+  title: TP-Personajes
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+paths:
+  /characters/:
+    post:
+      tags:
+        - default
+      summary: Create Character
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                Imagen: httpsblabla
+                Nombre: Zheoden
+                Edad: 6
+                Peso: 50
+                Historia: >-
+                  En el corazón palpitante de NeoCity, un enigmático ser
+                  habitaba bajo la dualidad de Julian. Al amanecer, su alma se
+                  transformaba en un profesor de programación apasionado por
+                  encender la llama del conocimiento. Pero al caer la noche,
+                  emergía Zheoden, un justiciero imbuido de los dones de una
+                  araña radiactiva. Sus hilos de seda tejían destinos,
+                  enfrentando con valentía a los corruptos que asolaban la
+                  ciudad. Con su capa ondeando al viento, Zheoden se erigía como
+                  un símbolo de esperanza, un faro de luz en una urbe sumida en
+                  la desesperanza.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /characters/6:
+    put:
+      tags:
+        - default
+      summary: Update Character
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                Id: 6
+                Imagen: hola.jpg
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /characters/7:
+    delete:
+      tags:
+        - default
+      summary: Eliminar Character
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /characters/4:
+    get:
+      tags:
+        - default
+      summary: Detalle Personaje
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /characters:
+    get:
+      tags:
+        - default
+      summary: Busqueda character por parametro
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+          example: hu
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /movies/:
+    get:
+      tags:
+        - default
+      summary: All Movies
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - default
+      summary: Create Movie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                Imagen: io
+                Titulo: GoT
+                FechaCreacion: '2017-11-09T00:00:00.000Z'
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /movies/5:
+    put:
+      tags:
+        - default
+      summary: Update Movie
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                Id: 5
+                Titulo: Game of Thrones
+                Imagen: holaquetal
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - default
+      summary: Eliminar Movie
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /movies:
+    get:
+      tags:
+        - default
+      summary: Busqueda movie por parametro 2
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: order
+          in: query
+          schema:
+            type: string
+          example: ASC
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

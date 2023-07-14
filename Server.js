@@ -20,6 +20,8 @@ app.use("/auth", AuthRouter);
 app.use("/characters", PersonajeRouter);
 app.use("/movies", PeliserieRouter);
 
+
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
